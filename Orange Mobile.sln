@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrangeMobileSelfhost", "OrangeMobileSelfhost\OrangeMobileSelfhost.csproj", "{5E2D065E-24D5-4CCC-AAFB-8977CE04B8BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrangeMobileWinForm", "OrangeMobileWinForm\OrangeMobileWinForm.csproj", "{8070B0B0-92DE-4B6B-9CC7-AB6DE262E484}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery3Selfhost", "D:\Projects\tired-software\ClassTutorial3\Gallery3Selfhost\Gallery3Selfhost.csproj", "{24F6055C-B824-4A33-BF92-C36329D43AAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery3WinForm", "D:\Projects\tired-software\ClassTutorial3\Gallery3WinForm\Gallery3WinForm.csproj", "{BE8A30BD-E71E-4F83-A944-D41A5578B149}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{5E2D065E-24D5-4CCC-AAFB-8977CE04B8BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E2D065E-24D5-4CCC-AAFB-8977CE04B8BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E2D065E-24D5-4CCC-AAFB-8977CE04B8BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8070B0B0-92DE-4B6B-9CC7-AB6DE262E484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8070B0B0-92DE-4B6B-9CC7-AB6DE262E484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8070B0B0-92DE-4B6B-9CC7-AB6DE262E484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8070B0B0-92DE-4B6B-9CC7-AB6DE262E484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F6055C-B824-4A33-BF92-C36329D43AAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F6055C-B824-4A33-BF92-C36329D43AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F6055C-B824-4A33-BF92-C36329D43AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F6055C-B824-4A33-BF92-C36329D43AAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE8A30BD-E71E-4F83-A944-D41A5578B149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE8A30BD-E71E-4F83-A944-D41A5578B149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE8A30BD-E71E-4F83-A944-D41A5578B149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE8A30BD-E71E-4F83-A944-D41A5578B149}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
