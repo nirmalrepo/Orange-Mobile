@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery3Selfhost", "D:\Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery3WinForm", "D:\Projects\tired-software\ClassTutorial3\Gallery3WinForm\Gallery3WinForm.csproj", "{BE8A30BD-E71E-4F83-A944-D41A5578B149}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Art Gallery 3 (Git) Master", "D:\Projects\tired-software\ClassTutorial3\Art Gallery 3 (Git) Master\Art Gallery 3 (Git) Master.csproj", "{6278A118-2037-42B7-8014-E9909ED38BEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LionTravelers", "..\LionTravelers\LionTravelers\LionTravelers.csproj", "{6C42C9C0-DBA4-4CB7-995C-B7CA2EE484E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{BE8A30BD-E71E-4F83-A944-D41A5578B149}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE8A30BD-E71E-4F83-A944-D41A5578B149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE8A30BD-E71E-4F83-A944-D41A5578B149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6278A118-2037-42B7-8014-E9909ED38BEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6278A118-2037-42B7-8014-E9909ED38BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6278A118-2037-42B7-8014-E9909ED38BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6278A118-2037-42B7-8014-E9909ED38BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C42C9C0-DBA4-4CB7-995C-B7CA2EE484E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C42C9C0-DBA4-4CB7-995C-B7CA2EE484E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C42C9C0-DBA4-4CB7-995C-B7CA2EE484E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C42C9C0-DBA4-4CB7-995C-B7CA2EE484E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

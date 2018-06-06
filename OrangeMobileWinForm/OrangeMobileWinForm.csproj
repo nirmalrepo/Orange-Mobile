@@ -54,11 +54,29 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNewPhone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewPhone.Designer.cs">
+      <DependentUpon>FrmNewPhone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPhone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPhone.Designer.cs">
+      <DependentUpon>FrmPhone.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClient.cs" />
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewPhone.resx">
+      <DependentUpon>FrmNewPhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPhone.resx">
+      <DependentUpon>FrmPhone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -82,6 +100,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrangeMobileSelfhost\OrangeMobileSelfhost.csproj">
+      <Project>{5e2d065e-24d5-4ccc-aafb-8977ce04b8bb}</Project>
+      <Name>OrangeMobileSelfhost</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

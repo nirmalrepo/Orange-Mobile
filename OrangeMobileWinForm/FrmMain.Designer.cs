@@ -151,6 +151,7 @@
             this.phoneList.Name = "phoneList";
             this.phoneList.Size = new System.Drawing.Size(170, 225);
             this.phoneList.TabIndex = 11;
+            this.phoneList.DoubleClick += new System.EventHandler(this.phoneList_DoubleClick);
             // 
             // FrmMain
             // 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OrangeMobileSelfhost;
 
 namespace OrangeMobileWinForm
 {
@@ -42,6 +43,11 @@ namespace OrangeMobileWinForm
         private void FrmMain_Load(object sender, EventArgs e)
         {
             UpdateDisplay();
+        }
+
+        private void phoneList_DoubleClick(object sender, EventArgs e)
+        {
+            FrmPhone.DispatchPhoneForm(phoneList.SelectedValue as clsPhone);
         }
     }
 }

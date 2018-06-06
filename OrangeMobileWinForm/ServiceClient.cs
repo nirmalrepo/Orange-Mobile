@@ -5,18 +5,24 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using OrangeMobileSelfhost;
 
 namespace OrangeMobileWinForm
 {
     class ServiceClient
     {
-        internal async static Task<List<string>> GetPhoneListAsync()
+        internal async static Task<List<clsPhone>> GetPhoneListAsync()
         {
             using (HttpClient lcHttpClient = new HttpClient())
-                return JsonConvert.DeserializeObject<List<string>>
+                return JsonConvert.DeserializeObject<List<clsPhone>>
                     (await lcHttpClient.GetStringAsync("http://localhost:60064/api/phone/GetPhoneList/"));
         }
-
+        //internal async static Task<List<clsPhone>> GetPhoneListAsync()
+        //{
+        //    using (HttpClient lcHttpClient = new HttpClient())
+        //        return JsonConvert.DeserializeObject<List<string>>
+        //            (await lcHttpClient.GetStringAsync("http://localhost:60064/api/phone/GetPhoneList/"));
+        //}
         //internal async static Task<clsArtist> GetArtistAsync(string prArtistName)
         //{
         //    using (HttpClient lcHttpClient = new HttpClient())
