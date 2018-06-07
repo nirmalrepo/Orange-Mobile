@@ -44,6 +44,7 @@
             this.comboBoxAvailabilty = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.textBoxID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,6 +178,7 @@
             this.button1.TabIndex = 14;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_ClickAsync);
             // 
             // btnCancel
             // 
@@ -189,11 +191,19 @@
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // textBoxID
+            // 
+            this.textBoxID.Location = new System.Drawing.Point(108, 27);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.Size = new System.Drawing.Size(100, 20);
+            this.textBoxID.TabIndex = 16;
+            // 
             // FrmPhone
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 356);
+            this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxAvailabilty);
@@ -236,5 +246,6 @@
         private System.Windows.Forms.ComboBox comboBoxAvailabilty;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox textBoxID;
     }
 }

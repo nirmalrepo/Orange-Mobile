@@ -51,6 +51,7 @@ namespace OrangeMobileWinForm
 
         protected virtual void updateForm()
         {
+            textBoxID.Text = Convert.ToString(_Phone.ID);
             textBoxIMEI.Text = _Phone.IMEI;
             textBoxName.Text = _Phone.Name;
             textBoxDescription.Text = _Phone.Description;
@@ -76,6 +77,27 @@ namespace OrangeMobileWinForm
         };
         public static void DispatchPhoneForm(clsPhone prPhone) {
             _PhoneForm[Convert.ToChar(prPhone.Type)].DynamicInvoke(prPhone);
+        }
+
+        private async void  button1_ClickAsync(object sender, EventArgs e)
+        {
+           
+            try {
+                pushData();
+                if (textBoxID.Text == "")
+
+                    MessageBox.Show(await ServiceClient.InsertProductAsync(_Phone));
+
+                else
+
+                    MessageBox.Show(await ServiceClient.UpdateProductAsync(_Phone));
+                Hide();
+                FrmMain.Instance.UpdateDisplay();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

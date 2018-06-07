@@ -24,7 +24,6 @@ namespace OrangeMobileSelfhost
             foreach (DataRow dr in lcResult.Rows)
                 lcPhones.Add(new clsPhone
                 {
-                    
                     ID = (int)dr[0],
                     IMEI = (string)dr[1],
                     Name = (string)dr[2],
@@ -36,7 +35,6 @@ namespace OrangeMobileSelfhost
                     Condition = (string)dr[8],
                     CategoryID = (int)dr[9],
                     Warrenty = (string)dr[10]
-
                 });
 
             return lcPhones;
@@ -77,7 +75,68 @@ namespace OrangeMobileSelfhost
             else
 
                 return null;
+        }
 
+        public string PostPhone(clsPhone prPhone)
+        {
+            try
+            {
+                int lcRecCount = ClsDBConnection.Execute("INSERT INTO tbl_all_product " +
+                    "(IMEI, name, item_price, description, color, type, availability, phone_condition, category_id, warrenty) " +
+                    "VALUES (@IMEI, @Name, @ItemPrice, @Description, @Color, @Type, @Availability, @Condition, @CategoryID, @Warrenty)", prepareWorkParameters(prPhone));
+                if (lcRecCount == 1) return "One Product inserted";
+                else return "Unexpected Product insert count: " + lcRecCount;
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+        }
+
+        public string PutPhone(clsPhone prPhone)
+        {
+            
+            try
+            {
+                int lcRecCount = ClsDBConnection.Execute(
+                "UPDATE tbl_all_products SET IMEI = @IMEI, name = @Name, item_price = @ItemPrice, description = @Description, color = @Color, type = @Type, availability = @Availability, " +
+                "phone_condition = @Condition, category_id = @CategoryID, warrenty = @Warrenty WHERE id = @Id",
+                prepareWorkParameters(prPhone));
+                Console.WriteLine("ID ====== {0}", prPhone.ID);
+                if (lcRecCount == 1)
+                    return "One product updated";
+                else
+                    return "Unexpected product update count: " + lcRecCount;
+
+            }
+            catch (Exception ex)
+
+            {
+
+                return ex.GetBaseException().Message;
+
+            }
+
+        }
+
+
+        private Dictionary<string, object> prepareWorkParameters(clsPhone prPhone)
+        {
+            
+            Dictionary<string, object> par = new Dictionary<string, object>(11);
+            par.Add("Id", prPhone.ID);
+            par.Add("IMEI", prPhone.IMEI);
+            par.Add("Name", prPhone.Name);
+            par.Add("ItemPrice", prPhone.ItemPrice);
+            par.Add("Description", prPhone.Description);
+            par.Add("Color", prPhone.Color);
+            par.Add("Type", prPhone.Type);
+            par.Add("Availability", prPhone.Availability);
+            par.Add("Condition", prPhone.Condition);
+            par.Add("CategoryId", prPhone.CategoryID);
+            par.Add("Warrenty", prPhone.Warrenty);
+            // Etc: your turn: 
+            return par;
         }
     }
 }
