@@ -80,6 +80,7 @@
             this.btnAddPhone.TabIndex = 4;
             this.btnAddPhone.Text = "Add Phone";
             this.btnAddPhone.UseVisualStyleBackColor = true;
+            this.btnAddPhone.Click += new System.EventHandler(this.btnAddPhone_Click);
             // 
             // comboBoxPhoneType
             // 

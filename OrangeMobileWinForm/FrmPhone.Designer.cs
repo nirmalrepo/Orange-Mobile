@@ -163,6 +163,9 @@
             // comboBoxAvailabilty
             // 
             this.comboBoxAvailabilty.FormattingEnabled = true;
+            this.comboBoxAvailabilty.Items.AddRange(new object[] {
+            "Available",
+            "Not Available"});
             this.comboBoxAvailabilty.Location = new System.Drawing.Point(108, 268);
             this.comboBoxAvailabilty.Name = "comboBoxAvailabilty";
             this.comboBoxAvailabilty.Size = new System.Drawing.Size(185, 21);
@@ -172,7 +175,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Green;
-            this.button1.Location = new System.Drawing.Point(108, 321);
+            this.button1.Location = new System.Drawing.Point(108, 349);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(82, 23);
             this.button1.TabIndex = 14;
@@ -184,7 +187,7 @@
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancel.Location = new System.Drawing.Point(212, 321);
+            this.btnCancel.Location = new System.Drawing.Point(212, 349);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(81, 23);
             this.btnCancel.TabIndex = 15;
@@ -197,12 +200,13 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(100, 20);
             this.textBoxID.TabIndex = 16;
+            this.textBoxID.Visible = false;
             // 
             // FrmPhone
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 356);
+            this.ClientSize = new System.Drawing.Size(334, 384);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.button1);

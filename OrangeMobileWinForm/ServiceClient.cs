@@ -18,6 +18,13 @@ namespace OrangeMobileWinForm
                     (await lcHttpClient.GetStringAsync("http://localhost:60064/api/phone/GetPhoneList/"));
         }
 
+        internal async static Task<List<clsPhoneCategories>> GetPhoneCategoriesAsync()
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+                return JsonConvert.DeserializeObject<List<clsPhoneCategories>>
+                    (await lcHttpClient.GetStringAsync("http://localhost:60064/api/phone/GetPhoneCategories/"));
+        }
+
         internal async static Task<string> InsertProductAsync(clsPhone prPhone)
         {
             return await InsertOrUpdateAsync(prPhone, "http://localhost:60064/api/phone/PostPhone", "POST");

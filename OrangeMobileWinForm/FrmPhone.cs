@@ -24,15 +24,22 @@ namespace OrangeMobileWinForm
             GetCategories();
         }
 
-        protected virtual void GetCategories()
+        protected async virtual void GetCategories()
         {
-            Dictionary<string, string> comboSource = new Dictionary<string, string>();
-            comboSource.Add("1", "Apple");
-            comboSource.Add("1", "Samsung");
 
-            comboBoxCategory.DataSource = new BindingSource(comboSource, null);
-            comboBoxCategory.DisplayMember = "Value";
-            comboBoxCategory.ValueMember = "Key";
+            //clsPhoneCategories item = new clsPhoneCategories();
+            //item.Text = "Apple";
+            //item.Value = 1;
+
+            //comboBoxCategory.Items.Add(item);
+
+            //item.Text = "Samsung";
+            //item.Value = 2;
+            //comboBoxCategory.Items.Add(item);
+
+            comboBoxCategory.DataSource = null;
+            comboBoxCategory.DataSource = await ServiceClient.GetPhoneCategoriesAsync();
+
 
         }
         public void SetDetails(clsPhone prPhone)
@@ -67,13 +74,15 @@ namespace OrangeMobileWinForm
             _Phone.Description = textBoxDescription.Text;
             _Phone.Color = textBoxColor.Text;
             _Phone.ItemPrice = numericUpDownPrice.Value;
+            _Phone.CategoryID = (comboBoxCategory.SelectedItem as clsPhoneCategories).Value;
+            _Phone.Availability = comboBoxAvailabilty.Text;
         }
 
         public delegate void LoadProductFormDelegate(clsPhone prPhone);
         public static Dictionary<char, Delegate> _PhoneForm = new Dictionary<char, Delegate>
         {
             { 'N', new LoadProductFormDelegate(FrmNewPhone.Run) },
-            { 'O', null }
+            { 'O', new LoadProductFormDelegate(FrmOldPhone.Run) }
         };
         public static void DispatchPhoneForm(clsPhone prPhone) {
             _PhoneForm[Convert.ToChar(prPhone.Type)].DynamicInvoke(prPhone);
@@ -84,7 +93,7 @@ namespace OrangeMobileWinForm
            
             try {
                 pushData();
-                if (textBoxID.Text == "")
+                if (textBoxID.Text == "" || textBoxID.Text == "0")
 
                     MessageBox.Show(await ServiceClient.InsertProductAsync(_Phone));
 

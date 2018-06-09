@@ -60,11 +60,23 @@
     <Compile Include="FrmNewPhone.Designer.cs">
       <DependentUpon>FrmNewPhone.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmOldPhone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOldPhone.Designer.cs">
+      <DependentUpon>FrmOldPhone.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPhone.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPhone.Designer.cs">
       <DependentUpon>FrmPhone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputBox.designer.cs">
+      <DependentUpon>InputBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,8 +87,14 @@
     <EmbeddedResource Include="FrmNewPhone.resx">
       <DependentUpon>FrmNewPhone.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmOldPhone.resx">
+      <DependentUpon>FrmOldPhone.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPhone.resx">
       <DependentUpon>FrmPhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

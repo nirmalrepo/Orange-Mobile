@@ -9,13 +9,12 @@ using OrangeMobileSelfhost;
 
 namespace OrangeMobileWinForm
 {
-    public sealed partial class FrmNewPhone : OrangeMobileWinForm.FrmPhone
+    public sealed partial class FrmOldPhone : OrangeMobileWinForm.FrmPhone
     {
-        private static readonly FrmNewPhone Instance = new FrmNewPhone();
-        public FrmNewPhone()
+        private static readonly FrmOldPhone Instance = new FrmOldPhone();
+        public FrmOldPhone()
         {
             InitializeComponent();
-            GetCategories();
         }
         public static void Run(clsPhone prPhone)
         {
@@ -31,12 +30,12 @@ namespace OrangeMobileWinForm
         {
             base.updateForm();
 
-            textBoxWarrenty.Text = _Phone.Warrenty;
+            comboBoxCondition.Text = _Phone.Condition;
         }
         protected override void pushData()
         {
             base.pushData();
-            _Phone.Warrenty = textBoxWarrenty.Text;
+            _Phone.Condition = comboBoxCondition.Text;
         }
     }
 }

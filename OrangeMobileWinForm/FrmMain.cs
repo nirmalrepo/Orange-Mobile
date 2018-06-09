@@ -49,5 +49,24 @@ namespace OrangeMobileWinForm
         {
             FrmPhone.DispatchPhoneForm(phoneList.SelectedValue as clsPhone);
         }
+
+        private void btnAddPhone_Click(object sender, EventArgs e)
+        {
+            string lcReply = new InputBox(clsPhone.FACTORY_PROMPT).Answer;
+            Console.WriteLine("Reply {0}", lcReply);
+            if (!string.IsNullOrEmpty(lcReply)) // not cancelled?
+
+            {
+
+                clsPhone lcPhone = clsPhone.NewPhone(lcReply[0]);
+                FrmPhone.DispatchPhoneForm(lcPhone);
+                if (lcPhone != null) // valid artwork created?
+
+                {
+                    FrmMain.Instance.UpdateDisplay();
+                                                                            }
+
+            }
+        }
     }
 }

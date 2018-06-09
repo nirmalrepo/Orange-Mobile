@@ -31,7 +31,7 @@ namespace OrangeMobileSelfhost
                     Description = (string)dr[4],
                     Color = (string)dr[5],
                     Type = (string)dr[6],
-                    Availability = (int)dr[7],
+                    Availability = (string)dr[7],
                     Condition = (string)dr[8],
                     CategoryID = (int)dr[9],
                     Warrenty = (string)dr[10]
@@ -39,6 +39,21 @@ namespace OrangeMobileSelfhost
 
             return lcPhones;
         }
+
+        public List<clsPhoneCategories> GetPhoneCategories()
+        {
+            DataTable lcResult = ClsDBConnection.GetDataTable("SELECT id, name FROM tbl_categories", null);
+            List<clsPhoneCategories> lcPhoneCategories = new List<clsPhoneCategories>();
+            foreach (DataRow dr in lcResult.Rows)
+                lcPhoneCategories.Add(new clsPhoneCategories
+                {
+                    Text = (string)dr[1],
+                    Value = (int)dr[0],
+                });
+
+            return lcPhoneCategories;
+        }
+
 
         public clsPhone GetPhoneDetailsById(string ID)
 
@@ -65,7 +80,7 @@ namespace OrangeMobileSelfhost
                     Description = (string)lcResult.Rows[0]["description"],
                     Color = (string)lcResult.Rows[0]["color"],
                     Type = (string)lcResult.Rows[0]["type"],
-                    Availability = (int)lcResult.Rows[0]["availability"],
+                    Availability = (string)lcResult.Rows[0]["availability"],
                     Condition = lcResult.Rows[0]["phone_condition"] != null ? (string)lcResult.Rows[0]["condition"] : "",
                     CategoryID = (int)lcResult.Rows[0]["category_id"],
                     Warrenty = (string)lcResult.Rows[0]["warrenty"]
@@ -81,7 +96,7 @@ namespace OrangeMobileSelfhost
         {
             try
             {
-                int lcRecCount = ClsDBConnection.Execute("INSERT INTO tbl_all_product " +
+                int lcRecCount = ClsDBConnection.Execute("INSERT INTO tbl_all_products " +
                     "(IMEI, name, item_price, description, color, type, availability, phone_condition, category_id, warrenty) " +
                     "VALUES (@IMEI, @Name, @ItemPrice, @Description, @Color, @Type, @Availability, @Condition, @CategoryID, @Warrenty)", prepareWorkParameters(prPhone));
                 if (lcRecCount == 1) return "One Product inserted";
