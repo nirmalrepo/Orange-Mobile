@@ -44,7 +44,6 @@
             this.comboBoxAvailabilty = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.textBoxID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).BeginInit();
             this.SuspendLayout();
@@ -137,6 +136,11 @@
             this.numericUpDownPrice.Name = "numericUpDownPrice";
             this.numericUpDownPrice.Size = new System.Drawing.Size(185, 20);
             this.numericUpDownPrice.TabIndex = 9;
+            this.numericUpDownPrice.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // textBoxDescription
             // 
@@ -164,6 +168,7 @@
             // 
             // comboBoxAvailabilty
             // 
+            this.comboBoxAvailabilty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAvailabilty.FormattingEnabled = true;
             this.comboBoxAvailabilty.Items.AddRange(new object[] {
             "Available",
@@ -195,14 +200,7 @@
             this.btnCancel.TabIndex = 15;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // textBoxID
-            // 
-            this.textBoxID.Location = new System.Drawing.Point(108, 27);
-            this.textBoxID.Name = "textBoxID";
-            this.textBoxID.Size = new System.Drawing.Size(100, 20);
-            this.textBoxID.TabIndex = 16;
-            this.textBoxID.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label8
             // 
@@ -219,7 +217,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 384);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxAvailabilty);
@@ -262,7 +259,6 @@
         private System.Windows.Forms.ComboBox comboBoxAvailabilty;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.Label label8;
     }
 }

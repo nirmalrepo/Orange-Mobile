@@ -38,5 +38,26 @@ namespace OrangeMobileWinForm
             base.pushData();
             _Phone.Condition = comboBoxCondition.Text;
         }
+        protected override bool IsValidForm()
+        {
+            if (!base.IsValidForm())
+            {
+                return false;
+            }
+            if (comboBoxCondition.Text == "")
+            {
+                ShowErrorMessage("Please provide all the required fields.", "Required Fields");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        protected override void ShowErrorMessage(string detail, string title)
+        {
+            base.ShowErrorMessage(detail, title);
+        }
     }
 }

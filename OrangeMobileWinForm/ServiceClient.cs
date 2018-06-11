@@ -36,12 +36,26 @@ namespace OrangeMobileWinForm
             return await InsertOrUpdateAsync(prPhone, "http://localhost:60064/api/phone/PutPhone", "PUT");
         }
 
-        internal async static Task<List<clsOrders>> GetPhoneOrdersAsync()
+        internal async static Task<List<clsOrders>> GetPhonePendingOrdersAsync()
         {
             using (HttpClient lcHttpClient = new HttpClient())
                 return JsonConvert.DeserializeObject<List<clsOrders>>
-                    (await lcHttpClient.GetStringAsync("http://localhost:60064/api/phone/GetPhoneOrders"));
+                    (await lcHttpClient.GetStringAsync("http://localhost:60064/api/phone/GetPhonePendingOrders"));
         }
+
+        internal async static Task<List<clsOrders>> GetPhoneCompletedOrdersAsync()
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+                return JsonConvert.DeserializeObject<List<clsOrders>>
+                    (await lcHttpClient.GetStringAsync("http://localhost:60064/api/phone/GetPhoneCompletedOrders"));
+        }
+
+        internal async static Task<string> ConfirmOrderAsync(clsOrders prOrder)
+        {
+
+            return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/phone/PutConfirmOrder", "PUT");
+        }
+
 
         private async static Task<string> InsertOrUpdateAsync<TItem>(TItem prItem, string prUrl, string prRequest)
         {

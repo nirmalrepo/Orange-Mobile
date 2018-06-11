@@ -12,11 +12,11 @@ using OrangeMobileSelfhost;
 namespace OrangeMobileWinForm
 {
     public sealed partial class FrmMain : Form
-    
+
     {
         private static readonly FrmMain _Instance = new FrmMain();
 
-    
+
 
         private FrmMain()
         {
@@ -48,7 +48,7 @@ namespace OrangeMobileWinForm
         private void btnAddPhone_Click(object sender, EventArgs e)
         {
             string lcReply = new InputBox(clsPhone.FACTORY_PROMPT).Answer;
-            
+
             if (!string.IsNullOrEmpty(lcReply)) // not cancelled?
 
             {
@@ -59,7 +59,7 @@ namespace OrangeMobileWinForm
 
                 {
                     FrmMain.Instance.UpdateDisplay();
-                                                                            }
+                }
 
             }
         }
@@ -69,5 +69,6 @@ namespace OrangeMobileWinForm
             FrmOrders frmOrders = new FrmOrders();
             frmOrders.Run();
         }
+
     }
 }

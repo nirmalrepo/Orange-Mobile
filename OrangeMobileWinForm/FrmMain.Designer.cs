@@ -34,7 +34,6 @@
             this.btnAddPhone = new System.Windows.Forms.Button();
             this.btnDeletePhone = new System.Windows.Forms.Button();
             this.btnOrders = new System.Windows.Forms.Button();
-            this.btnQuit = new System.Windows.Forms.Button();
             this.phoneList = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
@@ -93,23 +92,13 @@
             // btnOrders
             // 
             this.btnOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrders.Location = new System.Drawing.Point(247, 196);
+            this.btnOrders.Location = new System.Drawing.Point(247, 233);
             this.btnOrders.Name = "btnOrders";
             this.btnOrders.Size = new System.Drawing.Size(106, 66);
             this.btnOrders.TabIndex = 9;
             this.btnOrders.Text = "ORDERS";
             this.btnOrders.UseVisualStyleBackColor = true;
             this.btnOrders.Click += new System.EventHandler(this.btnOrders_Click);
-            // 
-            // btnQuit
-            // 
-            this.btnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuit.Location = new System.Drawing.Point(278, 309);
-            this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(75, 23);
-            this.btnQuit.TabIndex = 10;
-            this.btnQuit.Text = "Quit";
-            this.btnQuit.UseVisualStyleBackColor = true;
             // 
             // phoneList
             // 
@@ -126,7 +115,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(405, 361);
             this.Controls.Add(this.phoneList);
-            this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnOrders);
             this.Controls.Add(this.btnDeletePhone);
             this.Controls.Add(this.btnAddPhone);
@@ -149,7 +137,6 @@
         private System.Windows.Forms.Button btnAddPhone;
         private System.Windows.Forms.Button btnDeletePhone;
         private System.Windows.Forms.Button btnOrders;
-        private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.ListBox phoneList;
     }
 }

@@ -30,13 +30,12 @@ namespace OrangeMobileWinForm
 
             comboBoxCategory.DataSource = null;
             comboBoxCategory.DataSource = await ServiceClient.GetPhoneCategoriesAsync();
-            //            if (textBoxID.Text != "" || textBoxID.Text != null)
+            
             if (_Phone.ID != 0)
             {
                 List<clsPhoneCategories> lcCategories = (List<clsPhoneCategories>)comboBoxCategory.DataSource;
                 clsPhoneCategories lcCategory = lcCategories.FirstOrDefault(lcCat => lcCat.Value == _Phone.CategoryID);
-                //comboBoxCategory.SelectedIndex = comboBoxCategory.FindStringExact("2");
-                comboBoxCategory.Text = lcCategory.Text;
+                                comboBoxCategory.Text = lcCategory.Text;
             }
 
 
@@ -57,7 +56,6 @@ namespace OrangeMobileWinForm
 
         protected virtual void updateForm()
         {
-            textBoxID.Text = Convert.ToString(_Phone.ID);
             textBoxIMEI.Text = _Phone.IMEI;
             textBoxName.Text = _Phone.Name;
             textBoxDescription.Text = _Phone.Description;
@@ -93,24 +91,53 @@ namespace OrangeMobileWinForm
 
         private async void button1_ClickAsync(object sender, EventArgs e)
         {
-
-            try
+            string Response;
+            if (IsValidForm())
             {
-                pushData();
-                if (_Phone.ID  == 0)
+                try
+                {
+                    pushData();
+                    if (_Phone.ID == 0)
+                        Response = await ServiceClient.InsertProductAsync(_Phone);
+                        
+                    else
+                        Response = await ServiceClient.UpdateProductAsync(_Phone);
 
-                    MessageBox.Show(await ServiceClient.InsertProductAsync(_Phone));
-
-                else
-
-                    MessageBox.Show(await ServiceClient.UpdateProductAsync(_Phone));
-                Hide();
-                FrmMain.Instance.UpdateDisplay();
+                    MessageBox.Show(Response);
+                    if (!Response.Contains("Error"))
+                        Hide();
+                        FrmMain.Instance.UpdateDisplay();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        protected virtual bool IsValidForm()
+        {
+            if (textBoxColor.Text == "" & textBoxDescription.Text == "" && textBoxIMEI.Text == "" && textBoxName.Text == ""  )
             {
-                MessageBox.Show(ex.Message);
+                ShowErrorMessage("Please provide all the required fields.", "Required Fields");
+                return false;
             }
+            else
+            {
+                return true;
+            }
+        }
+
+        protected virtual void ShowErrorMessage(string detail, string title)
+        {
+            MessageBox.Show(detail, title,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

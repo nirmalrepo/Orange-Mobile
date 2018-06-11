@@ -10,7 +10,7 @@ namespace OrangeMobileSelfhost
 {
     public class PhoneController : ApiController
     {
-        
+
         public List<clsPhone> GetPhoneList()
         {
             DataTable lcResult = ClsDBConnection.GetDataTable("SELECT id, IMEI, name, item_price, description, color, type, availability, phone_condition, category_id, warrenty FROM tbl_all_products", null);
@@ -54,19 +54,14 @@ namespace OrangeMobileSelfhost
         {
 
             Dictionary<string, object> par = new Dictionary<string, object>(1);
-
             par.Add("ID", ID);
-
             DataTable lcResult =
-
             ClsDBConnection.GetDataTable("SELECT * FROM tbl_all_products WHERE id = @ID", par);
 
             if (lcResult.Rows.Count > 0)
 
                 return new clsPhone()
-
                 {
-
                     Name = (string)lcResult.Rows[0]["name"],
                     ID = (int)lcResult.Rows[0]["id"],
                     IMEI = (string)lcResult.Rows[0]["IMEI"],
@@ -78,11 +73,8 @@ namespace OrangeMobileSelfhost
                     Condition = lcResult.Rows[0]["phone_condition"] != null ? (string)lcResult.Rows[0]["condition"] : "",
                     CategoryID = (int)lcResult.Rows[0]["category_id"],
                     Warrenty = (string)lcResult.Rows[0]["warrenty"]
-
                 };
-
             else
-
                 return null;
         }
 
@@ -92,45 +84,41 @@ namespace OrangeMobileSelfhost
             {
                 int lcRecCount = ClsDBConnection.Execute("INSERT INTO tbl_all_products " +
                     "(IMEI, name, item_price, description, color, type, availability, phone_condition, category_id, warrenty) " +
-                    "VALUES (@IMEI, @Name, @ItemPrice, @Description, @Color, @Type, @Availability, @Condition, @CategoryID, @Warrenty)", prepareWorkParameters(prPhone));
+                    "VALUES (@IMEI, @Name, @ItemPrice, @Description, @Color, @Type, @Availability, @Condition, @CategoryID, @Warrenty)", preparePhoneParameters(prPhone));
                 if (lcRecCount == 1) return "One Product inserted";
-                else return "Unexpected Product insert count: " + lcRecCount;
+                else return "Error Unexpected Product insert count: " + lcRecCount;
             }
             catch (Exception ex)
             {
-                return ex.GetBaseException().Message;
+                return "Error: " + ex.GetBaseException().Message;
             }
         }
 
         public string PutPhone(clsPhone prPhone)
         {
-            
             try
             {
                 int lcRecCount = ClsDBConnection.Execute(
                 "UPDATE tbl_all_products SET IMEI = @IMEI, name = @Name, item_price = @ItemPrice, description = @Description, color = @Color, type = @Type, availability = @Availability, " +
                 "phone_condition = @Condition, category_id = @CategoryID, warrenty = @Warrenty WHERE id = @Id",
-                prepareWorkParameters(prPhone));
+                preparePhoneParameters(prPhone));
                 if (lcRecCount == 1)
                     return "One product updated";
                 else
-                    return "Unexpected product update count: " + lcRecCount;
-
+                    return "Error Unexpected product update count: " + lcRecCount;
             }
             catch (Exception ex)
-
             {
-
-                return ex.GetBaseException().Message;
-
+                return "Error: " + ex.GetBaseException().Message;
             }
 
         }
-        public List<clsOrders> GetPhoneOrders()
+        public List<clsOrders> GetPhonePendingOrders()
         {
             DataTable lcResult = ClsDBConnection.GetDataTable("SELECT tbl_orders.email, tbl_orders.amount, " +
                 "tbl_orders.id, tbl_all_products.`name`, DATE_FORMAT(tbl_orders.created_at,'%m/%d/%Y') as date" +
-                " FROM tbl_orders INNER JOIN tbl_all_products ON tbl_orders.product_id = tbl_all_products.id", null);
+                " FROM tbl_orders INNER JOIN tbl_all_products ON tbl_orders.product_id = tbl_all_products.id WHERE" +
+                " tbl_orders.`status` = 0", null);
             List<clsOrders> lcPhoneOrders = new List<clsOrders>();
             foreach (DataRow dr in lcResult.Rows)
                 lcPhoneOrders.Add(new clsOrders
@@ -145,9 +133,47 @@ namespace OrangeMobileSelfhost
             return lcPhoneOrders;
         }
 
-        private Dictionary<string, object> prepareWorkParameters(clsPhone prPhone)
+        public List<clsOrders> GetPhoneCompletedOrders()
         {
-            
+            DataTable lcResult = ClsDBConnection.GetDataTable("SELECT tbl_orders.email, tbl_orders.amount, " +
+                "tbl_orders.id, tbl_all_products.`name`, DATE_FORMAT(tbl_orders.created_at,'%m/%d/%Y') as date" +
+                " FROM tbl_orders INNER JOIN tbl_all_products ON tbl_orders.product_id = tbl_all_products.id WHERE" +
+                " tbl_orders.`status` = 1", null);
+            List<clsOrders> lcPhoneOrders = new List<clsOrders>();
+            foreach (DataRow dr in lcResult.Rows)
+                lcPhoneOrders.Add(new clsOrders
+                {
+                    Email = (string)dr[0],
+                    Amount = (string)dr[1],
+                    ID = (int)dr[2],
+                    ProductName = (string)dr[3],
+                    Date = (string)dr[4]
+                });
+
+            return lcPhoneOrders;
+        }
+
+        public string PutConfirmOrder(clsOrders prOrder)
+        {
+            try
+            {
+                int lcRecCount = ClsDBConnection.Execute(
+                "UPDATE tbl_orders SET status = 1 WHERE id = @Id",
+                prepareOrderParameters(prOrder));
+                if (lcRecCount == 1)
+                    return "Order is confirmed";
+                else
+                    return "Error Unexpected order confirm count: " + lcRecCount;
+
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+        }
+
+        private Dictionary<string, object> preparePhoneParameters(clsPhone prPhone)
+        {
             Dictionary<string, object> par = new Dictionary<string, object>(11);
             par.Add("Id", prPhone.ID);
             par.Add("IMEI", prPhone.IMEI);
@@ -163,6 +189,12 @@ namespace OrangeMobileSelfhost
             return par;
         }
 
+        private Dictionary<string, object> prepareOrderParameters(clsOrders prOrder)
+        {
+            Dictionary<string, object> par = new Dictionary<string, object>(1);
+            par.Add("Id", prOrder.ID);
+            return par;
+        }
 
     }
 }
