@@ -10,13 +10,7 @@ namespace OrangeMobileSelfhost
 {
     public class PhoneController : ApiController
     {
-        //public List<string> GetPhoneList()
-        //{
-        //    DataTable lcResult = ClsDBConnection.GetDataTable("SELECT name FROM tbl_all_products", null);
-        //    List<string> lcNames = new List<string>();
-        //    foreach (DataRow dr in lcResult.Rows)
-        //        lcNames.Add((string)dr[0]); return lcNames;
-        //}
+        
         public List<clsPhone> GetPhoneList()
         {
             DataTable lcResult = ClsDBConnection.GetDataTable("SELECT id, IMEI, name, item_price, description, color, type, availability, phone_condition, category_id, warrenty FROM tbl_all_products", null);
@@ -32,9 +26,9 @@ namespace OrangeMobileSelfhost
                     Color = (string)dr[5],
                     Type = (string)dr[6],
                     Availability = (string)dr[7],
-                    Condition = (string)dr[8],
+                    Condition = (dr[8] == DBNull.Value) ? string.Empty : (string)dr[8],
                     CategoryID = (int)dr[9],
-                    Warrenty = (string)dr[10]
+                    Warrenty = (dr[10] == DBNull.Value) ? string.Empty : (string)dr[10]
                 });
 
             return lcPhones;
@@ -117,7 +111,6 @@ namespace OrangeMobileSelfhost
                 "UPDATE tbl_all_products SET IMEI = @IMEI, name = @Name, item_price = @ItemPrice, description = @Description, color = @Color, type = @Type, availability = @Availability, " +
                 "phone_condition = @Condition, category_id = @CategoryID, warrenty = @Warrenty WHERE id = @Id",
                 prepareWorkParameters(prPhone));
-                Console.WriteLine("ID ====== {0}", prPhone.ID);
                 if (lcRecCount == 1)
                     return "One product updated";
                 else
@@ -133,7 +126,24 @@ namespace OrangeMobileSelfhost
             }
 
         }
+        public List<clsOrders> GetPhoneOrders()
+        {
+            DataTable lcResult = ClsDBConnection.GetDataTable("SELECT tbl_orders.email, tbl_orders.amount, " +
+                "tbl_orders.id, tbl_all_products.`name`, DATE_FORMAT(tbl_orders.created_at,'%m/%d/%Y') as date" +
+                " FROM tbl_orders INNER JOIN tbl_all_products ON tbl_orders.product_id = tbl_all_products.id", null);
+            List<clsOrders> lcPhoneOrders = new List<clsOrders>();
+            foreach (DataRow dr in lcResult.Rows)
+                lcPhoneOrders.Add(new clsOrders
+                {
+                    Email = (string)dr[0],
+                    Amount = (string)dr[1],
+                    ID = (int)dr[2],
+                    ProductName = (string)dr[3],
+                    Date = (string)dr[4]
+                });
 
+            return lcPhoneOrders;
+        }
 
         private Dictionary<string, object> prepareWorkParameters(clsPhone prPhone)
         {
@@ -150,8 +160,9 @@ namespace OrangeMobileSelfhost
             par.Add("Condition", prPhone.Condition);
             par.Add("CategoryId", prPhone.CategoryID);
             par.Add("Warrenty", prPhone.Warrenty);
-            // Etc: your turn: 
             return par;
         }
+
+
     }
 }

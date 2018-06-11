@@ -32,11 +32,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblTotalItems = new System.Windows.Forms.Label();
             this.btnAddPhone = new System.Windows.Forms.Button();
-            this.comboBoxPhoneType = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnEditPhone = new System.Windows.Forms.Button();
             this.btnDeletePhone = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnOrders = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
             this.phoneList = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
@@ -74,7 +71,7 @@
             // 
             this.btnAddPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddPhone.ForeColor = System.Drawing.Color.Green;
-            this.btnAddPhone.Location = new System.Drawing.Point(374, 74);
+            this.btnAddPhone.Location = new System.Drawing.Point(247, 75);
             this.btnAddPhone.Name = "btnAddPhone";
             this.btnAddPhone.Size = new System.Drawing.Size(106, 23);
             this.btnAddPhone.TabIndex = 4;
@@ -82,63 +79,32 @@
             this.btnAddPhone.UseVisualStyleBackColor = true;
             this.btnAddPhone.Click += new System.EventHandler(this.btnAddPhone_Click);
             // 
-            // comboBoxPhoneType
-            // 
-            this.comboBoxPhoneType.FormattingEnabled = true;
-            this.comboBoxPhoneType.Items.AddRange(new object[] {
-            "OLD",
-            "NEW"});
-            this.comboBoxPhoneType.Location = new System.Drawing.Point(247, 76);
-            this.comboBoxPhoneType.Name = "comboBoxPhoneType";
-            this.comboBoxPhoneType.Size = new System.Drawing.Size(106, 21);
-            this.comboBoxPhoneType.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(244, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Select Type:";
-            // 
-            // btnEditPhone
-            // 
-            this.btnEditPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditPhone.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.btnEditPhone.Location = new System.Drawing.Point(374, 159);
-            this.btnEditPhone.Name = "btnEditPhone";
-            this.btnEditPhone.Size = new System.Drawing.Size(106, 23);
-            this.btnEditPhone.TabIndex = 7;
-            this.btnEditPhone.Text = "Edit Details";
-            this.btnEditPhone.UseVisualStyleBackColor = true;
-            // 
             // btnDeletePhone
             // 
             this.btnDeletePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeletePhone.ForeColor = System.Drawing.Color.Red;
-            this.btnDeletePhone.Location = new System.Drawing.Point(374, 116);
+            this.btnDeletePhone.Location = new System.Drawing.Point(247, 117);
             this.btnDeletePhone.Name = "btnDeletePhone";
             this.btnDeletePhone.Size = new System.Drawing.Size(106, 23);
             this.btnDeletePhone.TabIndex = 8;
             this.btnDeletePhone.Text = "Delete";
             this.btnDeletePhone.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnOrders
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(247, 116);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 66);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "ORDERS";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrders.Location = new System.Drawing.Point(247, 196);
+            this.btnOrders.Name = "btnOrders";
+            this.btnOrders.Size = new System.Drawing.Size(106, 66);
+            this.btnOrders.TabIndex = 9;
+            this.btnOrders.Text = "ORDERS";
+            this.btnOrders.UseVisualStyleBackColor = true;
+            this.btnOrders.Click += new System.EventHandler(this.btnOrders_Click);
             // 
             // btnQuit
             // 
             this.btnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuit.Location = new System.Drawing.Point(411, 319);
+            this.btnQuit.Location = new System.Drawing.Point(278, 309);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(75, 23);
             this.btnQuit.TabIndex = 10;
@@ -158,14 +124,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 361);
+            this.ClientSize = new System.Drawing.Size(405, 361);
             this.Controls.Add(this.phoneList);
             this.Controls.Add(this.btnQuit);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnOrders);
             this.Controls.Add(this.btnDeletePhone);
-            this.Controls.Add(this.btnEditPhone);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBoxPhoneType);
             this.Controls.Add(this.btnAddPhone);
             this.Controls.Add(this.lblTotalItems);
             this.Controls.Add(this.label2);
@@ -184,11 +147,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblTotalItems;
         private System.Windows.Forms.Button btnAddPhone;
-        private System.Windows.Forms.ComboBox comboBoxPhoneType;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnEditPhone;
         private System.Windows.Forms.Button btnDeletePhone;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnOrders;
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.ListBox phoneList;
     }

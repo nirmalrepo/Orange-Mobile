@@ -27,18 +27,17 @@ namespace OrangeMobileWinForm
         protected async virtual void GetCategories()
         {
 
-            //clsPhoneCategories item = new clsPhoneCategories();
-            //item.Text = "Apple";
-            //item.Value = 1;
-
-            //comboBoxCategory.Items.Add(item);
-
-            //item.Text = "Samsung";
-            //item.Value = 2;
-            //comboBoxCategory.Items.Add(item);
 
             comboBoxCategory.DataSource = null;
             comboBoxCategory.DataSource = await ServiceClient.GetPhoneCategoriesAsync();
+            //            if (textBoxID.Text != "" || textBoxID.Text != null)
+            if (_Phone.ID != 0)
+            {
+                List<clsPhoneCategories> lcCategories = (List<clsPhoneCategories>)comboBoxCategory.DataSource;
+                clsPhoneCategories lcCategory = lcCategories.FirstOrDefault(lcCat => lcCat.Value == _Phone.CategoryID);
+                //comboBoxCategory.SelectedIndex = comboBoxCategory.FindStringExact("2");
+                comboBoxCategory.Text = lcCategory.Text;
+            }
 
 
         }
@@ -49,7 +48,7 @@ namespace OrangeMobileWinForm
             ShowDialog();
         }
 
-        
+
 
         protected virtual bool isValid()
         {
@@ -64,7 +63,10 @@ namespace OrangeMobileWinForm
             textBoxDescription.Text = _Phone.Description;
             textBoxColor.Text = _Phone.Color;
             numericUpDownPrice.Value = Convert.ToDecimal(_Phone.ItemPrice);
-                 
+            comboBoxAvailabilty.Text = _Phone.Availability;
+
+
+
         }
 
         protected virtual void pushData()
@@ -84,16 +86,18 @@ namespace OrangeMobileWinForm
             { 'N', new LoadProductFormDelegate(FrmNewPhone.Run) },
             { 'O', new LoadProductFormDelegate(FrmOldPhone.Run) }
         };
-        public static void DispatchPhoneForm(clsPhone prPhone) {
+        public static void DispatchPhoneForm(clsPhone prPhone)
+        {
             _PhoneForm[Convert.ToChar(prPhone.Type)].DynamicInvoke(prPhone);
         }
 
-        private async void  button1_ClickAsync(object sender, EventArgs e)
+        private async void button1_ClickAsync(object sender, EventArgs e)
         {
-           
-            try {
+
+            try
+            {
                 pushData();
-                if (textBoxID.Text == "" || textBoxID.Text == "0")
+                if (_Phone.ID  == 0)
 
                     MessageBox.Show(await ServiceClient.InsertProductAsync(_Phone));
 

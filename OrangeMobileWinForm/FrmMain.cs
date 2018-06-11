@@ -29,11 +29,6 @@ namespace OrangeMobileWinForm
         }
         public async void UpdateDisplay()
         {
-            //lstArtists.DataSource = null;
-            //string[] lcDisplayList = new string[_ArtistList.Count];
-            //_ArtistList.Keys.CopyTo(lcDisplayList, 0);
-            //lstArtists.DataSource = lcDisplayList;
-            //lblValue.Text = Convert.ToString(_ArtistList.GetTotalValue());
             phoneList.DataSource = null;
             phoneList.DataSource = await ServiceClient.GetPhoneListAsync();
             lblTotalItems.Text = phoneList.Items.Count.ToString();
@@ -53,7 +48,7 @@ namespace OrangeMobileWinForm
         private void btnAddPhone_Click(object sender, EventArgs e)
         {
             string lcReply = new InputBox(clsPhone.FACTORY_PROMPT).Answer;
-            Console.WriteLine("Reply {0}", lcReply);
+            
             if (!string.IsNullOrEmpty(lcReply)) // not cancelled?
 
             {
@@ -67,6 +62,12 @@ namespace OrangeMobileWinForm
                                                                             }
 
             }
+        }
+
+        private void btnOrders_Click(object sender, EventArgs e)
+        {
+            FrmOrders frmOrders = new FrmOrders();
+            frmOrders.Run();
         }
     }
 }

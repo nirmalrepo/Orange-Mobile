@@ -56,7 +56,7 @@
             // FrmOldPhone
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(334, 372);
+            this.ClientSize = new System.Drawing.Size(334, 399);
             this.Controls.Add(this.comboBoxCondition);
             this.Controls.Add(this.label8);
             this.Name = "FrmOldPhone";

@@ -45,5 +45,20 @@ namespace OrangeMobileSelfhost
         }
     }
 
+    public class clsOrders
+    {
+       
+        public int ID { get; set; }
+        public string ProductName { get; set; }
+        public string Email { get; set; }
+        public string Amount { get; set; }
+        public string Date { get; set; }
+
+        public override string ToString()
+        {
+            return ProductName + "\t" + Email + "\t" + Date + "\t" +  Amount + "\t" ;
+        }
+    }
+
     
 }

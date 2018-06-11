@@ -15,6 +15,7 @@ namespace OrangeMobileWinForm
         public FrmOldPhone()
         {
             InitializeComponent();
+            GetCategories();
         }
         public static void Run(clsPhone prPhone)
         {
