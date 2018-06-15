@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace OrangeMobileSelfhost
 {
@@ -19,7 +16,7 @@ namespace OrangeMobileSelfhost
         public string Warrenty { get; set; }
         public string Condition { get; set; }
         public int CategoryID { get; set; }
-        
+        public string Image { get; set; }
 
 
 
@@ -50,10 +47,12 @@ namespace OrangeMobileSelfhost
        
         public int ID { get; set; }
         public string ProductName { get; set; }
+        public string Name { get; set; }
         public string Email { get; set; }
         public string Amount { get; set; }
         public string Date { get; set; }
-
+        public DateTime UpdatedAt { get; set; }
+        public int ProductId { get; set; }
         public override string ToString()
         {
             return ProductName + "\t" + Email + "\t" + Date + "\t" +  Amount + "\t" ;

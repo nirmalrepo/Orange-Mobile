@@ -56,6 +56,7 @@
             this.Controls.Add(this.label8);
             this.Name = "FrmNewPhone";
             this.Text = "Orange Mobile - New Product";
+            this.Load += new System.EventHandler(this.FrmNewPhone_Load);
             this.Controls.SetChildIndex(this.label8, 0);
             this.Controls.SetChildIndex(this.textBoxWarrenty, 0);
             this.ResumeLayout(false);

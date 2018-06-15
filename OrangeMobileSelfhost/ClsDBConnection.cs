@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.Common;
 using System.Configuration;
@@ -36,7 +33,6 @@ namespace OrangeMobileSelfhost
                 lcDataConnection.ConnectionString = ConnectionStr;
                 lcDataConnection.Open();
                 lcCommand.CommandText = prSQL;
-                Console.WriteLine("Query==== {0}", lcCommand.CommandText);
                 setPars(lcCommand, prPars);
                 return lcCommand.ExecuteNonQuery();
             }
@@ -46,12 +42,14 @@ namespace OrangeMobileSelfhost
             if (prPars != null)
                 foreach (KeyValuePair<string, Object> lcItem in prPars)
                 {
-                    Console.WriteLine("PAra==== {0}", lcItem.Value);
                     DbParameter lcPar = ProviderFactory.CreateParameter();
                     lcPar.Value = lcItem.Value == null ? DBNull.Value : lcItem.Value;
                     lcPar.ParameterName = '@' + lcItem.Key;
                     prCommand.Parameters.Add(lcPar);
+                    
                 }
         }
+
+       
     }
 }

@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using OrangeMobileSelfhost;
 
@@ -26,16 +21,14 @@ namespace OrangeMobileWinForm
 
         protected async virtual void GetCategories()
         {
-
-
             comboBoxCategory.DataSource = null;
             comboBoxCategory.DataSource = await ServiceClient.GetPhoneCategoriesAsync();
-            
             if (_Phone.ID != 0)
             {
+
                 List<clsPhoneCategories> lcCategories = (List<clsPhoneCategories>)comboBoxCategory.DataSource;
                 clsPhoneCategories lcCategory = lcCategories.FirstOrDefault(lcCat => lcCat.Value == _Phone.CategoryID);
-                                comboBoxCategory.Text = lcCategory.Text;
+                comboBoxCategory.Text = lcCategory.Text;
             }
 
 
@@ -99,21 +92,21 @@ namespace OrangeMobileWinForm
                     pushData();
                     if (_Phone.ID == 0)
                         Response = await ServiceClient.InsertProductAsync(_Phone);
-                        
+
                     else
                         Response = await ServiceClient.UpdateProductAsync(_Phone);
 
                     MessageBox.Show(Response);
                     if (!Response.Contains("Error"))
                         Hide();
-                        FrmMain.Instance.UpdateDisplay();
+                    FrmMain.Instance.UpdateDisplay();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
-            
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -123,7 +116,7 @@ namespace OrangeMobileWinForm
 
         protected virtual bool IsValidForm()
         {
-            if (textBoxColor.Text == "" & textBoxDescription.Text == "" && textBoxIMEI.Text == "" && textBoxName.Text == ""  )
+            if (textBoxColor.Text == "" & textBoxDescription.Text == "" && textBoxIMEI.Text == "" && textBoxName.Text == "")
             {
                 ShowErrorMessage("Please provide all the required fields.", "Required Fields");
                 return false;

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.SelfHost;
 
@@ -17,6 +13,7 @@ namespace OrangeMobileSelfhost
             Uri _baseAddress = new Uri("http://localhost:60064/");
 
             HttpSelfHostConfiguration config = new HttpSelfHostConfiguration(_baseAddress);
+            config.EnableCors();
 
             config.Routes.MapHttpRoute(
 

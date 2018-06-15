@@ -61,6 +61,7 @@
             this.Controls.Add(this.label8);
             this.Name = "FrmOldPhone";
             this.Text = "Orange Mobile - Old Product";
+            this.Load += new System.EventHandler(this.FrmOldPhone_Load);
             this.Controls.SetChildIndex(this.label8, 0);
             this.Controls.SetChildIndex(this.comboBoxCondition, 0);
             this.ResumeLayout(false);

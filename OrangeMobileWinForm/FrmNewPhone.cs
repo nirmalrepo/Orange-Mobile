@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using OrangeMobileSelfhost;
 
 namespace OrangeMobileWinForm
@@ -15,17 +9,14 @@ namespace OrangeMobileWinForm
         public FrmNewPhone()
         {
             InitializeComponent();
-            GetCategories();
+          
         }
         public static void Run(clsPhone prPhone)
         {
             Instance.SetDetails(prPhone);
         }
 
-        protected override void GetCategories()
-        {
-            base.GetCategories();
-        }
+    
 
         protected override void updateForm()
         {
@@ -58,6 +49,11 @@ namespace OrangeMobileWinForm
         protected override void ShowErrorMessage(string detail, string title)
         {
             base.ShowErrorMessage(detail, title);
+        }
+
+        private void FrmNewPhone_Load(object sender, EventArgs e)
+        {
+            base.GetCategories();
         }
     }
 }
