@@ -33,7 +33,7 @@ namespace OrangeMobileSelfhost
 
             server.OpenAsync().Wait();
 
-            Console.WriteLine("Gallery Web-API Self hosted on " + _baseAddress);
+            Console.WriteLine("Phone Web-API Self hosted on " + _baseAddress);
 
             Console.WriteLine("Hit ENTER to exit...");
 
