@@ -43,6 +43,7 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnClose = new System.Windows.Forms.Button();
+            this.deleteBtnOrder = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +121,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.deleteBtnOrder);
             this.groupBox2.Controls.Add(this.listViewCompletedOrders);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Green;
@@ -176,6 +178,18 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // deleteBtnOrder
+            // 
+            this.deleteBtnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteBtnOrder.ForeColor = System.Drawing.Color.Black;
+            this.deleteBtnOrder.Location = new System.Drawing.Point(577, 20);
+            this.deleteBtnOrder.Name = "deleteBtnOrder";
+            this.deleteBtnOrder.Size = new System.Drawing.Size(71, 40);
+            this.deleteBtnOrder.TabIndex = 8;
+            this.deleteBtnOrder.Text = "Delete Order";
+            this.deleteBtnOrder.UseVisualStyleBackColor = true;
+            this.deleteBtnOrder.Click += new System.EventHandler(this.deleteBtnOrder_Click);
+            // 
             // FrmOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,5 +226,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button deleteBtnOrder;
     }
 }

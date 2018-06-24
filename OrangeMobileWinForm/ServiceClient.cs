@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using OrangeMobileSelfhost;
+using System;
 
 namespace OrangeMobileWinForm
 {
@@ -48,6 +49,12 @@ namespace OrangeMobileWinForm
                     (await lcHttpClient.GetStringAsync("http://localhost:60064/api/phone/GetPhoneCompletedOrders"));
         }
 
+        internal async static Task<string> DeletePhoneAsync(clsPhone prPhone)
+        {
+            Console.WriteLine("Dele {0}", prPhone.ID);
+            return await InsertOrUpdateAsync(prPhone, "http://localhost:60064/api/phone/DeletePhone", "DELETE");
+        }
+
         internal async static Task<string> ConfirmOrderAsync(clsOrders prOrder)
         {
 
@@ -64,6 +71,11 @@ namespace OrangeMobileWinForm
                 HttpResponseMessage lcRespMessage = await lcHttpClient.SendAsync(lcReqMessage);
                 return await lcRespMessage.Content.ReadAsStringAsync();
             }
+        }
+
+        internal async static Task<string> DeleteOrderAsync(clsOrders prOrder)
+        {
+            return await InsertOrUpdateAsync(prOrder, "http://localhost:60064/api/phone/DeleteOrder", "DELETE");
         }
     }
 }

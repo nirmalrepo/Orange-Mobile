@@ -88,6 +88,7 @@
             this.btnDeletePhone.TabIndex = 8;
             this.btnDeletePhone.Text = "Delete";
             this.btnDeletePhone.UseVisualStyleBackColor = true;
+            this.btnDeletePhone.Click += new System.EventHandler(this.btnDeletePhone_Click);
             // 
             // btnOrders
             // 

@@ -35,7 +35,8 @@ namespace OrangeMobileWinForm
 
         private void phoneList_DoubleClick(object sender, EventArgs e)
         {
-            FrmPhone.DispatchPhoneForm(phoneList.SelectedValue as clsPhone);
+            var prPhone = phoneList.SelectedValue as clsPhone;
+                        FrmPhone.DispatchPhoneForm(phoneList.SelectedValue as clsPhone);
         }
 
         private void btnAddPhone_Click(object sender, EventArgs e)
@@ -63,5 +64,18 @@ namespace OrangeMobileWinForm
             frmOrders.Run();
         }
 
+        private  async void btnDeletePhone_Click(object sender, EventArgs e)
+        {
+            string Response; 
+            DialogResult result = MessageBox.Show("Are you sure to Delete ?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+
+                Response = await ServiceClient.DeletePhoneAsync(phoneList.SelectedValue as clsPhone);
+                MessageBox.Show(Response);
+                FrmMain.Instance.UpdateDisplay();
+
+            }
+        }
     }
 }

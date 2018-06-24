@@ -170,6 +170,26 @@ namespace OrangeMobileSelfhost
             }
 
         }
+
+        public string DeletePhone(clsPhone prPhone)
+        {
+            
+            try
+            {
+                int lcRecCount = ClsDBConnection.Execute(
+                "DELETE FROM tbl_all_products WHERE id = @Id",
+                preparePhoneParameters(prPhone));
+                if (lcRecCount == 1)
+                    return "One product deleted";
+                else
+                    return "Error Unexpected product update count: " + lcRecCount;
+            }
+            catch (Exception ex)
+            {
+                return "Error: " + ex.GetBaseException().Message;
+            }
+
+        }
         public List<clsOrders> GetPhonePendingOrders()
         {
             DataTable lcResult = ClsDBConnection.GetDataTable("SELECT tbl_orders.email, tbl_orders.amount, " +
@@ -230,6 +250,24 @@ namespace OrangeMobileSelfhost
             }
         }
 
+        public string DeleteOrder(clsOrders prOrder)
+        {
+            try
+            {
+                int lcRecCount = ClsDBConnection.Execute(
+                "DELETE FROM tbl_orders WHERE id = @Id",
+                prepareOrderParameters(prOrder));
+                if (lcRecCount == 1)
+                    return "Order is deleted";
+                else
+                    return "Error Unexpected order confirm count: " + lcRecCount;
+
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+        }
         public string PostOrder(clsOrders prOrder)
         {
             var validString = ValidateNewOrder(prOrder);

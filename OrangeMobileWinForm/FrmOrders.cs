@@ -94,9 +94,42 @@ namespace OrangeMobileWinForm
             }
         }
 
+        private async void deleteOrder()
+        {
+            clsOrders lcOrder = (clsOrders)listViewCompletedOrders.FocusedItem.Tag;
+
+            try
+            {
+                MessageBox.Show(await ServiceClient.DeleteOrderAsync(lcOrder));
+                UpdateDisplay();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void deleteBtnOrder_Click(object sender, EventArgs e)
+        {
+            if (listViewCompletedOrders.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("Please select alteast one completed order.", "Selection Required!",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Delete Order ?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    deleteOrder();
+                }
+
+            }
         }
     }
 }
